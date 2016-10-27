@@ -4,6 +4,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twit = require('twit');
+let serverFingerprintsArray = []
 
 require('dotenv').config();
 
@@ -21,9 +22,12 @@ app.get('/', function(req, res){
   res.render(__dirname + '/views/index.ejs');
 });
 
-io.on('connection', function(socket){
+io.sockets.on('connection', function(socket){
+
   socket.on('clicked', function(val){
-    io.emit('totalclicked', val);
+    // val = {count: count, fingerprint: fingerprint}
+    serverFingerprintsArray.push(val.fingerprint)
+    io.emit('totalclicked', {count: val.count, fingerprints: serverFingerprintsArray});
   });
 
   // including twitter stream
