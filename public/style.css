@@ -12,6 +12,11 @@ img
   margin:auto;
 }
 
+#logo {
+  position: relative;
+}
+
+
 #tweet-box {
   position: relative;
   top:0;
@@ -24,7 +29,6 @@ img
   border: thick solid black;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding-left: 10px;
 }
 
 h3 {
