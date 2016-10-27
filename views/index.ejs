@@ -1,14 +1,19 @@
-<div id="left" class="box">
-  left: <span id="left-vote">0</span>
-</div>
-<div id="right" class="box">
-  right: <span id="right-vote">0</span>
+<head>
+  <title>Voting App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="javascript/main.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+  <h1>Vote for your favourite acts during the live voting episodes</h1>
+  Current total votes is: <span id="counter">0</span>
+  <img id="buzz" src="img/buzz.png"/>
+
+<div id="tweet-box">
+<h3>Twitter Highlights</h3>
 </div>
 
-<form>
-  <input id="msg" type="text"></input>
-  <button type="submit">send</button>
-</form>
-
-<ul id="chatroom">
-</ul>
+</body>

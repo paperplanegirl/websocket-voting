@@ -1,0 +1,27 @@
+body {
+  background-color: #0000FF;
+}
+
+img
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+}
+
+#tweet-box {
+  position: relative;
+  top:500;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  width: 1000px;
+  height: 500px;
+  border: thin solid black;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

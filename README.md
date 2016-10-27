@@ -1,1 +1,1 @@
-# socket-left-right-vote-chat-example
+# socket-buzzer-voting-app
