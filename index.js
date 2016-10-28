@@ -6,6 +6,7 @@ var io = require('socket.io')(http);
 var Twit = require('twit');
 var serverFingerprintsArray = []
 var currentCount = 0
+var port = process.env.PORT || 3000
 
 // require('dotenv').config();
 
@@ -34,13 +35,13 @@ io.sockets.on('connection', function(socket){
 
   // including twitter stream
   var stream = twitter.stream('statuses/filter', { track: 'got talent' });
-  
+
   stream.on('tweet', function(tweet) {
     socket.emit('tweets', tweet);
   });
 });
 
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(port, function(){
+  console.log(`listening on ${port}`);
 });
