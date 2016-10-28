@@ -5,6 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var Twit = require('twit');
 var serverFingerprintsArray = []
+var currentCount = 0
 
 // require('dotenv').config();
 
@@ -23,15 +24,17 @@ app.get('/', function(req, res){
 });
 
 io.sockets.on('connection', function(socket){
+  io.emit('updateCount', currentCount)
 
-  socket.on('clicked', function(val){
-    // val = {count: count, fingerprint: fingerprint}
-    serverFingerprintsArray.push(val.fingerprint)
-    io.emit('totalclicked', {count: val.count, fingerprints: serverFingerprintsArray});
+  socket.on('clicked', function(data){
+    currentCount++
+    serverFingerprintsArray.push(data.fingerprint)
+    io.emit('totalclicked', {count: currentCount, fingerprints: serverFingerprintsArray});
   });
 
   // including twitter stream
   var stream = twitter.stream('statuses/filter', { track: 'got talent' });
+  
   stream.on('tweet', function(tweet) {
     socket.emit('tweets', tweet);
   });

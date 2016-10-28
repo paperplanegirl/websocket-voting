@@ -3,7 +3,7 @@ var socket = io();
 
 $(document).ready(function () {;
 
-  var count = 0
+  var count
   var clientFingerprintsArray = []
   // Create a new ClientJS object and get the client's fingerprint id
   var client = new ClientJS()
@@ -11,6 +11,12 @@ $(document).ready(function () {;
   console.log(fingerprint);
 
   // socket.emit('newFP', fingerprint)
+  socket.on('updateCount', function(currentCount) {
+    count = currentCount
+    $('#counter').empty().append(count)
+  })
+
+
 
   socket.on('disconnect', function () {
     console.log('user disconnected')
@@ -40,4 +46,6 @@ $(document).ready(function () {;
   socket.on('totalFP', function(fingerprints) {
     clientFingerprintsArray = fingerprints
   })
+
+
 })
