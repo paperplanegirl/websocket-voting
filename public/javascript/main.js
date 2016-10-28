@@ -11,8 +11,9 @@ $(document).ready(function () {;
   console.log(fingerprint);
 
   // socket.emit('newFP', fingerprint)
-  socket.on('updateCount', function(currentCount) {
-    count = currentCount
+  socket.on('updateCount', function(data) {
+    clientFingerprintsArray = data.fingerprints
+    count = data.count
     $('#counter').empty().append(count)
   })
 
