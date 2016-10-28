@@ -7,7 +7,10 @@ $(document).ready(function () {;
   var clientFingerprintsArray = []
   // Create a new ClientJS object and get the client's fingerprint id
   var client = new ClientJS()
-  var fingerprint = client.getCustomFingerprint()
+  var ua = client.getBrowserData().ua;
+	var canvasPrint = client.getCanvasPrint();
+
+	var fingerprint = client.getCustomFingerprint(ua, canvasPrint);
   console.log(fingerprint);
 
   socket.on('updateCount', function(data) {
