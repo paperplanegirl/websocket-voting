@@ -25,7 +25,7 @@ app.get('/', function(req, res){
 });
 
 io.sockets.on('connection', function(socket){
-  io.emit('updateCount', currentCount)
+  io.emit('updateCount', {count: currentCount, fingerprints: serverFingerprintsArray});
 
   socket.on('clicked', function(data){
     currentCount++

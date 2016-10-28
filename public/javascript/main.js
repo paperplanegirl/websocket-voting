@@ -10,7 +10,6 @@ $(document).ready(function () {;
   var fingerprint = client.getCustomFingerprint()
   console.log(fingerprint);
 
-  // socket.emit('newFP', fingerprint)
   socket.on('updateCount', function(data) {
     clientFingerprintsArray = data.fingerprints
     count = data.count
