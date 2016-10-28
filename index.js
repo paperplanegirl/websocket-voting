@@ -6,7 +6,7 @@ var io = require('socket.io')(http);
 var Twit = require('twit');
 var serverFingerprintsArray = []
 
-require('dotenv').config();
+// require('dotenv').config();
 
 var twitter = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
